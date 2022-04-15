@@ -5,3 +5,7 @@ from django.shortcuts import render,HttpResponse
 
 def index(request):
     return HttpResponse("Welcome") #response by http to client
+
+
+def result(request, type):
+    return HttpResponse("Result: "+type)
