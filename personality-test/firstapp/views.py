@@ -14,8 +14,7 @@ def index(request):
     global menus
     ul=''
     for menu in menus:
-        ul+=f'<li><a href="/read/{menu["id"]}>{menu["title"]} </li>'
-        print(ul)
+        ul+=f'<li><a href="/read/{menu["id"]}">{menu["title"]}</a> </li>'
         
     return HttpResponse(f'''
         <html>
@@ -31,6 +30,8 @@ def index(request):
 def index(request):
     return HttpResponse("Welcome") #response by http to client
 '''
+def read(request,id):
+    return HttpResponse("Read"+id)
 
 def result(request, type):
     return HttpResponse("Result: "+type)
