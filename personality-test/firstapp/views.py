@@ -8,19 +8,21 @@ menus=[
     {'id':2, 'title': 'share'}
 ]
 
-
-
-def index(request):
+def HTMLTemplate(articleTag):
     global menus
     ul=''
     for menu in menus:
         ul+=f'<li><a href="/read/{menu["id"]}">{menu["title"]}</a> </li>'
+
+
+def index(request):
+    
         
     return HttpResponse(f'''
         <html>
         <body>
         <ul>
-        {ul}
+        아아아아
         </ul>
         </body>
         </html>
