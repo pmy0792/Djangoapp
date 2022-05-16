@@ -3,37 +3,12 @@ from pydoc_data.topics import topics
 from django.http import HttpResponse
 from django.shortcuts import render,HttpResponse
 
-menus=[
-    {'id':1, 'title':'start menu'},
-    {'id':2, 'title': 'share'}
-]
-
-def HTMLTemplate(articleTag):
-    global menus
-    ul=''
-    for menu in menus:
-        ul+=f'<li><a href="/read/{menu["id"]}">{menu["title"]}</a> </li>'
-
 
 def index(request):
+    return HttpResponse('This is index page')
     
-        
-    return HttpResponse(f'''
-        <html>
-        <body>
-        <ul>
-        아아아아
-        </ul>
-        </body>
-        </html>
-                        ''')
-    
-'''
-def index(request):
-    return HttpResponse("Welcome") #response by http to client
-'''
-def read(request,id):
-    return HttpResponse("Read"+id)
+def result(request, id):
+    return HttpResponse("Your looking at the result #"+id)
 
-def result(request, type):
-    return HttpResponse("Result: "+type)
+def statistics(request):
+    return HttpResponse("Your looking at the statistic page")

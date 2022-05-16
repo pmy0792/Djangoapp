@@ -4,8 +4,7 @@ from firstapp import views
 # routing information
 
 urlpatterns = [
-    path('',views.index),
-    path('home/',views.index),
-    path('result/<type>',views.result),
-    path('read/<id>',views.read)
+    path('',views.index, name='index'),
+    path('result/<id>',views.result,name='result'),
+    path('statistics',views.statistics,name='statistics')
 ]
