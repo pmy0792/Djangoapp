@@ -3,8 +3,10 @@ from firstapp import views
 
 # routing information
 
+app_name='firstapp'
 urlpatterns = [
     path('',views.index, name='index'),
-    path('result/<id>',views.result,name='result'),
+    path('test',views.test,name='test'),
+    path('result/<question_id>',views.result,name='result'),
     path('statistics',views.statistics,name='statistics')
 ]
