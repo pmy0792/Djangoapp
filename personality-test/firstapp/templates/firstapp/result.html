@@ -1,10 +1,9 @@
 This is result page.
 
 <h3>Question: {{ question.question_text }}</h3>
-<ul>
-    {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} == {{ choice.votes }} vote{{choice.votes|pluralize}}</li>
-    {% endfor %}
-</ul>
 
+Your type: {{result_type}}
+<br>
 <a href="{% url 'firstapp:test' %}">Vote again?</a>
+
+<!-- here shows the statistics-->

@@ -1,6 +1,21 @@
-<ul>
-<h2> Question list </h2>
-{% for question in question_list %}
-    <li>{{question.question_text}}</li>
-{% endfor %}
-</ul>
+<html>
+    <title>
+        Part-time Job Test
+    </title>
+    <body>
+        <h1> Index Page </h1>
+
+
+        <ul>
+        <h2> Question list </h2>
+        {% for question in question_list %}
+            <li>{{question.question_text}}</li>
+        {% endfor %}
+
+        <br><br>
+        <a href="/test">  
+            <button>go to test</button>  
+        </a>
+        </ul>
+    </body>
+</html>

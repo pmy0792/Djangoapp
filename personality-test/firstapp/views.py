@@ -3,9 +3,11 @@ from pydoc_data.topics import topics
 from django.http import HttpResponse
 from django.shortcuts import render,HttpResponse,get_object_or_404,HttpResponseRedirect
 from django.urls import reverse
-#from django.http import Http404
+from django.http import Http404
 
 from .models import *
+
+question_num=Question.objects.all().count()
 
 def index(request):
     question_list=Question.objects.all()
@@ -14,14 +16,43 @@ def index(request):
     
 def test(request):
     question=get_object_or_404(Question,pk=1)
+    user_ip=request.META['REMOTE_ADDR']
+    
+    if not User.objects.filter(user_ip=user_ip).exists():
+        u=User(user_ip=request.META['REMOTE_ADDR'])
+        u.save()
+        
+    user_obj=User.objects.get(user_ip=user_ip)
+        
     if request.method=="GET":
         return render(request,'firstapp/test.html',{'question': question})
     
     elif request.method=="POST":
+        print(request.POST['choice'])
+        # 1) 선택지 Voting 모델에 저장
+        selected_choice=get_object_or_404(Choice,pk=request.POST['choice'])
+        selected_choice.votes+=1
+        selected_choice.save()
         
-        next_question_id= request.POST['keyname'] + 1
-        question=get_object_or_404(Question,pk=next_question_id)
-        return HttpResponseRedirect(reverse('firstapp:test',args=(question,)))
+        vote=Voting(user_ip=user_obj, question=question,choice=selected_choice)
+        vote.save()
+        
+        # 2-1) 해당 질문이 마지막 질문일 경우 결과 페이지로 render
+        if question_num==int(request.POST['question_id']):
+            # 해당 user의 최근 투표 데이터 가져와서 결과 산출
+            votings=Voting.objects.filter(user_ip__user_ip=user_ip).values('choice')
+            print(votings)
+            
+            result=1
+            context={'result_type':result}
+            return render(request,'firstapp/result.html',context)
+        
+        # 2-2) 그다음 질문 내용 가져와서 render
+        else:
+            next_question_id= int(request.POST['question_id']) + 1
+            question=get_object_or_404(Question,pk=next_question_id)
+            return render(request,'firstapp/test.html',{'question': question})
+            #return HttpResponseRedirect(reverse('firstapp:test',args=(question,)))
     '''
     try:
         question=Question.objects.get(pk=1)
