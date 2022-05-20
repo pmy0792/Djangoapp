@@ -1,9 +1,23 @@
-This is result page.
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <title>
+        Part Time Job Test
+    </title>
+    <body>
+        This is result page.
 
-<h3>Question: {{ question.question_text }}</h3>
+        <h3>Question: {{ question.question_text }}</h3>
 
-Your type: {{result_type}}
-<br>
-<a href="{% url 'firstapp:test' %}">Vote again?</a>
+        Your type: {{result_type}}
+        <br>
+        <!-- here shows the details about the result-->
+        <img src="{% static 'ocean-cat.jpg' ">
 
-<!-- here shows the statistics-->
+
+
+        <a href="{% url 'firstapp:test' %}">Vote again?</a>
+
+        <!-- here shows the statistics-->
+    </body>
+</html>

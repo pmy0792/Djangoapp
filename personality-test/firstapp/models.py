@@ -27,3 +27,9 @@ class Voting(models.Model):
     
     def __str__(self):
         return "Voting: {} user voted {} in '{}'' Question".format(self.user_ip, self.choice, self.question)
+    
+class ResultType(models.Model):
+    title=models.CharField(max_length=40)
+    subtitle=models.CharField(max_length=100)
+    description=models.CharField(max_length=1000)
+    image=models.ImageField(upload_to='static')
