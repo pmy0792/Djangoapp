@@ -32,4 +32,4 @@ class ResultType(models.Model):
     title=models.CharField(max_length=40)
     subtitle=models.CharField(max_length=100)
     description=models.CharField(max_length=1000)
-    image=models.ImageField(upload_to='static')
+    image=models.ImageField()
