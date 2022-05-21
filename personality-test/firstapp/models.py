@@ -1,3 +1,4 @@
+from unittest.util import _MAX_LENGTH
 from django.db import models
 
 # Create your models here.
@@ -33,3 +34,7 @@ class ResultType(models.Model):
     subtitle=models.CharField(max_length=100)
     description=models.TextField()
     image=models.ImageField(upload_to="firstapp/static/firstapp/img/")
+
+class UserResultStorage(models.Model):
+    user_ip=models.ForeignKey(User,on_delete=models.DO_NOTHING,default="0.0.0.0")
+    type=models.ForeignKey(ResultType, on_delete=models.CASCADE)
