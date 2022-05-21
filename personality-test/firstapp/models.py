@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Question(models.Model):
     question_text=models.CharField(max_length=200) #human readable name
-    
+    question_type=models.CharField(max_length=10,default='EI') #holds the type of a question for calculating the result
     def __str__(self):
         return "Question: "+self.question_text
     
