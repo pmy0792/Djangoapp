@@ -31,5 +31,5 @@ class Voting(models.Model):
 class ResultType(models.Model):
     title=models.CharField(max_length=40)
     subtitle=models.CharField(max_length=100)
-    description=models.CharField(max_length=1000)
+    description=models.TextField()
     image=models.ImageField()
