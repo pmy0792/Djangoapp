@@ -20,7 +20,7 @@ mbti_and_result={
     'ENFJ':'Kids Cafe Staff'  
 }
 
-question_num=4
+question_num=12
 def calc_result(user):
     points={'EI':0, 'NS':0,'TF':0,'JP':0}
     vote=Voting.objects.filter(user_ip__user_ip=user).values('choice','question')
@@ -41,7 +41,7 @@ def calc_result(user):
         
     mbti_type=""
     for key in points.keys():
-        mbti_type += (key[0] if points[key]>=1 else key[1])
+        mbti_type += (key[0] if points[key]>=2 else key[1])
         print(mbti_type)
         
     result_type=mbti_and_result[mbti_type]

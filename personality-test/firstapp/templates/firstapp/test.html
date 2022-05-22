@@ -1,38 +1,35 @@
-<h4>This is test page</h4>
+{% include "firstapp/head.html" %}
+    <body class="col">
+        <br><br><br>
+        <div>Select the option that's more close to you! </div><br>
 
-<form action="{% url 'firstapp:test' %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        <legend><h2>{{question.question_text}}</h2></legend>
-        <input type="hidden" name="question_id" value="{{question.id}}">
-        {% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
-
-        {% for choice in question.choice_set.all %}
-
-        <!-- forloop.counter indicates how many times the for tag has gone through its loop -->
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} </label>
-        <br>
-        {% endfor %}
-    </fieldset>
-    <input type="submit" value="Vote">
-</form>
-
-
-<!---------------------------------------------------------------------------------------------------------------------->
-
-<form action="{% url 'firstapp:test' %}" method="POST">
-    {% csrf_token %}
-
-
-
-
-</form>
-<!--
-<h3>{{question}}</h3>
-<ul>
-    {% for choice in question.choice_set.all %}
-        <li>{{choice.choice_text}}</li>
-    {% endfor %}
-</ul>
--->
+        <form action="{% url 'firstapp:test' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend><h3>{{question.question_text}}</h3></legend>
+                <input type="hidden" name="question_id" value="{{question.id}}">
+                <div class="form-check" role="group" >
+                    <br><br><br>
+                <div>
+                {% for choice in question.choice_set.all %}
+                    <!-- forloop.counter indicates how many times the for tag has gone through its loop -->
+                    
+                    
+                    <label class="form-check-label" for="choice{{ forloop.counter }}"><input  type="radio" class="'form-check-input" autocomplete="off" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
+                        {{ choice.choice_text }} </label>
+                    
+                    <br>
+                {% endfor %}
+                </div>
+                </div>
+            </fieldset>
+            <br><br>
+            <input class="btn-primary" type="submit" value="NEXT">
+        </form>
+        <form action="{% url 'firstapp:test' %}" method="POST">
+            {% csrf_token %}
+        </form>
+        <br><br>
+        {% include 'firstapp/footer.html' %}
+    </body>
+</html>

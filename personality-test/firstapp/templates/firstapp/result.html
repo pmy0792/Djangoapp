@@ -1,25 +1,22 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-    <title>
-        Part Time Job Test
-    </title>
+{% include "firstapp/head.html" %}
+
     <body>
-        This is result page.
+        <h1>Result</h1>
         <br>
-        Your type: {{result.title}}<br>
-        <img src="{{result.image.url}}" width="25%" height="25%"><br>
+        <p>Part time job recommended for you is...</p>
+        <h2><strong>{{result.title}}</strong></h2><br>
+        <img src="{{result.image.url}}" width="50%" height="50%"><br>
         <br>
-        {{result.subtitle}}
-        <br><br>
-        [Description]
+        <h4><strong>{{result.subtitle}}</strong></h4>
+        <p>[Description]</p>
         <br>
-        {{result.description}}
-        <br><br>
+        <p>{{result.description|linebreaks}}</p>
+        <br>
         
 
-        <a href="{% url 'firstapp:test' %}">Vote again?</a>
-
-        <!-- here shows the statistics-->
+        <a href="{% url 'firstapp:test' %}" class="btn btn-primary">Test again</a>
+        <br><br><br>
+        {% include 'firstapp/footer.html' %}
     </body>
 </html>

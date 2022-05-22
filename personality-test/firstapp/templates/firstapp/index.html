@@ -1,21 +1,17 @@
-<html>
-    <title>
-        Part-time Job Test
-    </title>
+{% load static %}
+<!DOCTYPE html>
+{% include "firstapp/head.html" %}
     <body>
-        <h1> Index Page </h1>
-
-
-        <ul>
-        <h2> Question list </h2>
-        {% for question in question_list %}
-            <li>{{question.question_text}}</li>
-        {% endfor %}
+        <h2> What's part time job recommended for you?</h2>
+        <img src="static/img/main_image.jpg">
 
         <br><br>
         <a href="/test">  
-            <button>go to test</button>  
+            <button class="btn-primary">Go to test</button>  
         </a>
-        </ul>
+        <br><br><br>
+        
+    {% include 'firstapp/footer.html' %}
     </body>
+    
 </html>
