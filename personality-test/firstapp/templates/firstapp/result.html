@@ -1,3 +1,4 @@
+{% load social_share %}
 <!DOCTYPE html>
 {% include "firstapp/head.html" %}
 
@@ -13,8 +14,11 @@
         <br>
         <p>{{result.description|linebreaks}}</p>
         <br>
-        
 
+        {% post_to_facebook "Part time job for me?" "Post to Facebook" %}
+        {% post_to_twitter "Part time job for me?" "Post to Twitter" %}
+       
+        <br><br>
         <a href="{% url 'firstapp:test' %}" class="btn btn-primary">Test again</a>
         <br><br><br>
         {% include 'firstapp/footer.html' %}

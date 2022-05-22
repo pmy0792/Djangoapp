@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'firstapp.apps.FirstappConfig',
     'django_extensions',
     'bootstrap4',
+    'django_social_share',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
