@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.http import Http404
 
 from .models import *
+from ComputeResult import *
 
 question_num=Question.objects.all().count()
 
@@ -18,6 +19,7 @@ def test(request):
     question=get_object_or_404(Question,pk=1)
     user_ip=request.META['REMOTE_ADDR']
     
+    # 처음 접속하는 유저일 경우 유저 정보 저장
     if not User.objects.filter(user_ip=user_ip).exists():
         u=User(user_ip=request.META['REMOTE_ADDR'])
         u.save()
@@ -37,13 +39,20 @@ def test(request):
         vote=Voting(user_ip=user_obj, question=question,choice=selected_choice)
         vote.save()
         
-        # 2-1) 해당 질문이 마지막 질문일 경우 결과 페이지로 render
+        # 2-1) 해당 질문이 마지막 질문일 경우, 결과 모델에 저장하고 결과 페이지로 render
         if question_num==int(request.POST['question_id']):
             # 해당 user의 최근 투표 데이터 가져와서 결과 산출
             votings=Voting.objects.filter(user_ip__user_ip=user_ip).values('choice')
             print(votings)
             
             result=1
+            
+            # calculate user result here...
+            
+            
+            user_type=ResultType.objects.filter(title="coffee shop staff")
+            
+            user_result=UserResultStorage(user_ip=user_obj, type=user_type)
             context={'result_type':result}
             return render(request,'firstapp/result.html',context)
         
