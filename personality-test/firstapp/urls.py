@@ -6,7 +6,7 @@ from firstapp import views
 app_name='firstapp'
 urlpatterns = [
     path('',views.index, name='index'),
-    path('test',views.test,name='test'),
-    path('result/<result_type>',views.result,name='result'),
-    path('statistics',views.statistics,name='statistics')
+    path('test/',views.test,name='test'),
+    path('result/<result_id>',views.result,name='result'),
+    path('statistics/',views.statistics,name='statistics')
 ]

@@ -34,7 +34,7 @@ class ResultType(models.Model):
     title=models.CharField(max_length=40)
     subtitle=models.CharField(max_length=100)
     description=models.TextField()
-    image=models.ImageField(upload_to="firstapp/static/firstapp/img/")
+    image=models.ImageField() #upload to media folder?..
 
 class UserResultStorage(models.Model):
     user_ip=models.ForeignKey(User,on_delete=models.DO_NOTHING,default="0.0.0.0")

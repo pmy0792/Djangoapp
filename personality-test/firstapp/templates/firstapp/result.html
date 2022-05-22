@@ -6,13 +6,17 @@
     </title>
     <body>
         This is result page.
-
-        <h3>Question: {{ question.question_text }}</h3>
         <br>
-        Your type: {{result_type}}
+        Your type: {{result.title}}<br>
+        <img src="{{result.image.url}}" width="25%" height="25%"><br>
         <br>
-        <!-- here shows the details about the result-->
-        <img src="{% static 'firstapp/img/ocean-cat.jpg' %}"><br>
+        {{result.subtitle}}
+        <br><br>
+        [Description]
+        <br>
+        {{result.description}}
+        <br><br>
+        
 
         <a href="{% url 'firstapp:test' %}">Vote again?</a>
 
