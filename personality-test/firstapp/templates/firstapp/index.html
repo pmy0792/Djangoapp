@@ -1,14 +1,22 @@
 {% load static %}
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 {% include "firstapp/head.html" %}
     <body>
         <h2> What part time job is recommended for you?</h2>
-        <img src="static/img/main_image.jpg">
+        <img src="static/img/main_image.jpg" alt="main image">
 
         <br><br>
+        <!--
         <button class="btn-primary">
         <a href="/test" style="color:white">Go to test</a></button>  
+        -->
+        <form style="display: inline" action="/test" method="get">
+            {% csrf_token %}
+            <button class="btn-primary">Go to test</button>
+        </form>
+
+
         <br><br><br>
         
     {% include 'firstapp/footer.html' %}
