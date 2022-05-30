@@ -1,5 +1,6 @@
 {% load social_share %}
-<!DOCTYPE html>
+<!DOCTYPE html5>
+<html lang="en">
 {% include "firstapp/head.html" %}
 
     <body>
@@ -7,7 +8,7 @@
         <br>
         <p>Part time job recommended for you is...</p>
         <h2><strong>{{result.title}}</strong></h2><br>
-        <img src="{{result.image.url}}" width="50%" height="50%"><br>
+        <img src="{{result.image.url}}" width="50%" height="50%" alt="Result image"><br>
         <br>
         <h4><strong>{{result.subtitle}}</strong></h4>
         <p>[Description]</p>
